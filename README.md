@@ -4,7 +4,7 @@
 This project focuses on predictive maintenance using the NASA CMAPSS dataset, where the objective is to predict Remaining Useful Life (RUL) of aircraft engines.
 Dataset used: CMAPSS FD001 subset
 
-Unlike a basic ML project, this work evolved into a full experimental pipeline, including:
+Overview:
 * Baseline modeling
 * Target engineering (RUL clipping)
 * Feature engineering (successful + failed attempts)
