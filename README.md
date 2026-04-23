@@ -1,4 +1,4 @@
-#  NASA CMAPSS Engine Degradation Analysis (RUL Prediction)
+#  NASA CMAPSS Engine Degradation Investigation (RUL Prediction)
 
 ## 📌 Project Overview
 This project focuses on predictive maintenance using the NASA CMAPSS dataset, where the objective is to predict Remaining Useful Life (RUL) of aircraft engines.
