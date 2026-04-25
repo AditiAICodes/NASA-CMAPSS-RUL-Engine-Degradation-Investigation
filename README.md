@@ -175,13 +175,39 @@ Instead of forcing improvements:
 
 ---
 
-##  Honest Note
-This project intentionally keeps failed experiments. 
-
-Because:
-> A clean success story teaches less than a messy real one.
 
 ## 📝 Final Summary
 This project is not just about predicting RUL. It demonstrates:
 > how real machine learning works:
 > build ➔ break ➔ analyze ➔ refine ➔ conclude
+
+### ⚠️ Pipeline Bug & Feature Engineering Recovery
+
+**The Experiment:**
+I introduced time-aware features to improve degradation modeling:
+* `_diff` ➔ rate of change (Speedometer)
+* `_roll_mean` ➔ trend smoothing (Shock Absorber)
+* `_roll_std` ➔ instability detection (Death Rattle)
+
+**The Crash:**
+Upon training the Random Forest with these new features, performance inexplicably dropped:
+* MAE ↑ to ~21 
+* R² ↓ to ~79%
+At first, this appeared to be a case of increased feature noise or dimensionality issues.
+
+**The Investigation & Fix:**
+Initially, I thought this was the "Curse of Dimensionality" (too much noise degrading the model). However, upon auditing the data pipeline, I discovered a critical logic bug: **The temporary memory drop.** When generating the new features, the pipeline copied the *raw* data (`df_temp = df_train_clean.copy()`), completely overwriting the `Cap = 100` target optimization I had built in the previous phase. 
+As a result:
+Baseline model used clipped RUL
+Feature-engineered model used unclipped RUL
+
+**The Resolution:**
+I enforced consistent preprocessing by applying RUL clipping before feature usage:
+Ensuring both baseline and feature-engineered models used identical target definitions.
+
+**The Result:**
+Once the pipeline was corrected, feature engineering showed strong improvements:
+* **MAE:** 6.35 flights
+* **R²:**  89.23%
+
+**Key Insight:** Feature engineering is only effective when the target variable and preprocessing pipeline remain consistent across experiments.
