@@ -175,14 +175,6 @@ Instead of forcing improvements:
 
 ---
 
-
-## 📝 Final Summary
-This project is not just about predicting RUL. It demonstrates:
-> how real machine learning works:
-> build ➔ break ➔ analyze ➔ refine ➔ conclude
-
----
-
 ### ⚠️ Pipeline Bug & Feature Engineering Recovery
 
 **The Experiment:**
@@ -213,3 +205,11 @@ Once the pipeline was corrected, feature engineering showed strong improvements:
 * **R²:**  89.23%
 
 **Key Insight:** Feature engineering is only effective when the target variable and preprocessing pipeline remain consistent across experiments.
+
+---
+
+## 📝 Final Summary
+This project is not just about predicting RUL. It demonstrates:
+> how real machine learning works:
+> build ➔ break ➔ analyze ➔ refine ➔ conclude
+
