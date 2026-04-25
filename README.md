@@ -181,6 +181,8 @@ This project is not just about predicting RUL. It demonstrates:
 > how real machine learning works:
 > build ➔ break ➔ analyze ➔ refine ➔ conclude
 
+---
+
 ### ⚠️ Pipeline Bug & Feature Engineering Recovery
 
 **The Experiment:**
