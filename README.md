@@ -191,9 +191,10 @@ At first, this appeared to be a case of increased feature noise or dimensionalit
 
 **The Investigation & Fix:**
 Initially, I thought this was the "Curse of Dimensionality" (too much noise degrading the model). However, upon auditing the data pipeline, I discovered a critical logic bug: **The temporary memory drop.** When generating the new features, the pipeline copied the *raw* data (`df_temp = df_train_clean.copy()`), completely overwriting the `Cap = 100` target optimization I had built in the previous phase. 
+
 As a result:
-Baseline model used clipped RUL
-Feature-engineered model used unclipped RUL
+*Baseline model used clipped RUL
+*Feature-engineered model used unclipped RUL
 
 **The Resolution:**
 I enforced consistent preprocessing by applying RUL clipping before feature usage:
